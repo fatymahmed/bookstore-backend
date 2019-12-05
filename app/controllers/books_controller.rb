@@ -7,7 +7,6 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     render :json => @book unless !@book.save
-    end
   end
 
   def destroy
