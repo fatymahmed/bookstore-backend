@@ -6,13 +6,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    render :json => @book unless !@book.save
+    render :json => Book.all unless !@book.save
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    render :json => @book
+    render :json => Book.all
   end
 
   private
