@@ -1,26 +1,19 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
-    respond_to do |format|
-      format.json { render :json => @books }
-    end
+    render :json => @books
   end
 
   def create
     @book = Book.new(book_params)
-    if @book.save
-      respond_to do |format|
-        format.json { render :json => @book }
-      end
+    render :json => @book unless !@book.save
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    respond_to do |format|
-      format.json { render :json => @book }
-    end
+    render :json => @book
   end
 
   private
